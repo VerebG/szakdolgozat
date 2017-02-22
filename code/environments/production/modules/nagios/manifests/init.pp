@@ -35,14 +35,27 @@
 # Authors
 # -------
 #
-# Author Name <author@domain.com>
+# Gabor Vereb <>
 #
 # Copyright
 # ---------
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class nagios {
+class nagios (
+  String $config_dir,
+  String $package_name,
+  String $default_package_provider,
+){
 
+  Package {
+    provider => $default_package_provider
+  }
+
+  include apt
+  include ::nagios::service
+  include ::nagios::install
+
+  Class['::nagios::install'] ~> Class['::nagios::service']
 
 }

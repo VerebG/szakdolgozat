@@ -1,0 +1,14 @@
+---
+version: 5
+defaults:
+  datadir: data
+  data_hash: yaml_data
+hierarchy:
+  - name: "Operating System Specified Variables"
+    path: "%{facts.os.name}/%{facts.os.distro.codename}.yaml"
+
+  - name: "Operating System Family Variables"
+    path: "%{facts.os.name}.yaml"
+
+  - name: "Common Variables"
+    path: "common.yaml"
