@@ -4,7 +4,7 @@ class nagios::service (
 ) {
 
   service {
-    $::nagios::package_name:
+    $::nagios::service_name:
       enable   => $icinga_autostart,
       ensure   => running,
       provider => $provider;

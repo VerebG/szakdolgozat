@@ -1,4 +1,3 @@
 ---
 nagios::service::icinga_autostart: true
-nagios::default_package_provider: apt
-nagios::install::override_default_repo_priority: true
+nagios::server::install::ubuntu::override_default_repo_priority: true

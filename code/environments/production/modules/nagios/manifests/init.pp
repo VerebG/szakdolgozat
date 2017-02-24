@@ -44,18 +44,18 @@
 #
 class nagios (
   String $config_dir,
-  String $package_name,
+  String $service_name,
   String $default_package_provider,
 ){
 
   Package {
-    provider => $default_package_provider
+    provider => $::nagios::default_package_provider,
   }
 
   include apt
   include ::nagios::service
   include ::nagios::install
 
-  Class['::nagios::install'] ~> Class['::nagios::service']
+  Class['apt'] -> Class['::nagios::install'] ~> Class['::nagios::service']
 
 }

@@ -1,4 +1,7 @@
 ---
 nagios::config_dir: '/etc/icinga2'
-nagios::package_name: 'icinga2'
-nagios::install::ppa_repo: 'ppa:formorer/icinga'
+nagios::service_name: 'icinga2'
+nagios::default_package_provider: apt
+nagios::server::install::ubuntu::packages:
+  - 'icinga2'
+nagios::server::install::ubuntu::ppa_repo: 'ppa:formorer/icinga'

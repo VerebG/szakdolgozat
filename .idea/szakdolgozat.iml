@@ -4,8 +4,8 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="Remote:ruby-2.1.9-p490" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="stub [puppet module]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="fast_gettext (v1.1.0, Remote:ruby-2.1.9-p490) [gem]" level="application" />
+    <orderEntry type="library" name="stub [puppet module]" level="application" />
   </component>
   <component name="PuppetLibraryUpdateService" isEnabled="true" />
 </module>

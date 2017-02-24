@@ -1,27 +1,10 @@
-class nagios::install (
-  String $ppa_repo,
-  Boolean $override_default_repo_priority,
-  Integer $apt_backport_pin = $override_default_repo_priority ? {
-    true  => 500,
-    false => 200,
-  }
-){
+class nagios::install {
 
-
-  package {
-    $::nagios::package_name:
-      ensure => latest;
+  case downcase($facts['os']['name'] ) {
+    'Ubuntu': {
+      contain 'nagios::server::install::ubuntu'
+      Class['nagios::server::install::ubuntu']
+    }
   }
 
-  apt::ppa {
-    $ppa_repo:
-      ;
-  }
-
-  class {
-    'apt::backports':
-      pin => $apt_backport_pin,
-  }
-
-  Apt::Ppa[$ppa_repo] -> Class['apt::backports'] -> Package[$::nagios::package_name]
 }

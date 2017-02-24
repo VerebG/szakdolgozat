@@ -1,9 +1,10 @@
 node default {
   $test = lookup('test', Hash, 'deep')
 
-  class {
+  include ::nagios
+  /*class {
     '::nagios':
       ;
-  }
+  }*/
 
 }
