@@ -1,6 +1,6 @@
 require 'spec_helper'
-describe 'nagios' do
+describe 'icinga' do
   context 'with default values for all parameters' do
-    it { should contain_class('nagios') }
+    it { should contain_class('icinga') }
   end
 end

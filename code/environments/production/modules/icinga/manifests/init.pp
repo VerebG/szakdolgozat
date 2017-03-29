@@ -1,7 +1,7 @@
-# Class: nagios
+# Class: icinga
 # ===========================
 #
-# Full description of class nagios here.
+# Full description of class icinga here.
 #
 # Parameters
 # ----------
@@ -28,7 +28,7 @@
 # --------
 #
 # @example
-#    class { 'nagios':
+#    class { 'icinga':
 #      servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #    }
 #
@@ -42,20 +42,14 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class nagios (
+class icinga (
   String $config_dir,
   String $service_name,
   String $default_package_provider,
 ){
 
   Package {
-    provider => $::nagios::default_package_provider,
+    provider => $::icinga::default_package_provider,
   }
-
-  include apt
-  include ::nagios::service
-  include ::nagios::install
-
-  Class['apt'] -> Class['::nagios::install'] ~> Class['::nagios::service']
 
 }

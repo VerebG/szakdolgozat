@@ -1,0 +1,20 @@
+---
+hostname: &hostname sync01
+internal_ip: &internal_ip 192.168.3.1
+external_ip: &external_ip
+network:
+  eth0:
+    ipaddress:     *internal_ip
+    netmask:       255.255.0.0
+    network:       192.168.0.0
+    broadcast:     192.168.255.255
+    gateway:       192.168.1.254
+filesynchronization:
+  mode: sender only
+  sender:
+    targets:
+      vhosts:
+        source: /vhosts
+        target: 192.168.3.2
+        username: root
+        share: vhosts

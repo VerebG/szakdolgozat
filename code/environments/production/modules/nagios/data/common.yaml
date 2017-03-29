@@ -1,3 +1,0 @@
----
-nagios::service::icinga_autostart: true
-nagios::server::install::ubuntu::override_default_repo_priority: true

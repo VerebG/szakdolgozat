@@ -1,11 +1,11 @@
 {
-  "name": "gaborvereb-nagios",
+  "name": "gaborvereb-icinga",
   "version": "0.0.1",
   "author": "Gabor Vereb",
   "summary": "Setup Icinga 2 server with web interfaces and manage connected nodes",
   "license": "Apache-2.0",
-  "source": "https://github.com/VerebG/gaborvereb-nagios",
-  "project_page": "https://github.com/VerebG/gaborvereb-nagios",
+  "source": "https://github.com/VerebG/gaborvereb-icinga",
+  "project_page": "https://github.com/VerebG/gaborvereb-icinga",
   "issues_url": "https://tickets.puppetlabs.com/browse/MODULES",
   "dependencies": [
     {

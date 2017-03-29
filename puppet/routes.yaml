@@ -1,5 +1,11 @@
 ---
-master:
+apply:
+  catalog:
+    terminus: compiler
+    cache: puppetdb
+  resource:
+    terminus: ral
+    cache: puppetdb
   facts:
-    terminus: puppetdb
-    cache: yaml
+    terminus: facter
+    cache: puppetdb_apply

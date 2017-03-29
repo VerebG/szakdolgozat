@@ -1,3 +1,4 @@
-0x0001 2017-02-20T08:27:03UTC 2022-02-20T08:27:03UTC /CN=Puppet CA: puppetmaster4.home.lan
-0x0002 2017-02-20T08:27:06UTC 2022-02-20T08:27:06UTC /CN=puppetmaster4.home.lan
-0x0003 2017-02-20T10:21:56UTC 2022-02-20T10:21:56UTC /CN=entrecore.home.lan
+0x0001 2017-03-27T11:49:24UTC 2022-03-27T11:49:24UTC /CN=Puppet CA: puppetmaster4.szakdolgozat.itautomation.cloud
+0x0002 2017-03-27T11:49:26UTC 2022-03-27T11:49:26UTC /CN=puppetmaster4.szakdolgozat.itautomation.cloud
+0x0003 2017-03-27T11:50:54UTC 2022-03-27T11:50:54UTC /CN=sync01.szakdolgozat.itautomation.cloud
+0x0004 2017-03-27T11:52:10UTC 2022-03-27T11:52:10UTC /CN=sync02.szakdolgozat.itautomation.cloud

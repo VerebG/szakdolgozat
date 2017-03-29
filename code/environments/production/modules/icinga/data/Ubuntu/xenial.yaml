@@ -1,0 +1,3 @@
+---
+icinga::service::provider: "systemd"
+icinga::server::install::ubuntu::use_php_seven: false

@@ -1,2 +1,0 @@
----
-nagios::service::provider: "systemd"
