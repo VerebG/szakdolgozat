@@ -27,11 +27,9 @@ class icinga::server::install::ubuntu (
       pin => $apt_backport_pin;
   }
 
-  Package['software-properties-common']
-    -> Apt::Ppa[$ppa_repo]
-    -> Class['apt::backports']
-    -> Package[$packages]
-
 }
+
+
+
 
 

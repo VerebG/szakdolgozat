@@ -1,1 +1,5 @@
 ---
+users:
+  verebgaborhu:
+    ensure: present
+    id: 5000
