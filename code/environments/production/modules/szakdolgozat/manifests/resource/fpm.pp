@@ -8,6 +8,9 @@ define szakdolgozat::resource::fpm (
   Hash $php_value
 ) {
 
+  include ::phpfpm
+  include ::nginx
+
   $vhost_directory = "${::szakdolgozat::default_vhosts_directory}/${name}"
 
   file {

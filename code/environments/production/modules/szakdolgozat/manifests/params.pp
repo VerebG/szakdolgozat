@@ -21,4 +21,6 @@ class szakdolgozat::params {
 
   $user_default_shell = '/usr/sbin/nologin'
 
+  $nagios_default_working_directory = '/etc/nagios3'
+
 }

@@ -1,7 +1,7 @@
 class szakdolgozat::basepackages {
 
   $packages_will_install = [
-    'mc', 'htop', 'iptraf', 'augeas-tools'
+    'mc', 'htop', 'iptraf', 'augeas-tools', 'libfcgi0ldbl'
   ]
 
   $packages_will_purge = [
