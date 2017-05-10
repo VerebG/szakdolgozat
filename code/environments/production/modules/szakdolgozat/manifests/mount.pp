@@ -38,3 +38,4 @@ class szakdolgozat::mount {
   -> Mount <| fstype == glusterfs |>
 
 }
+

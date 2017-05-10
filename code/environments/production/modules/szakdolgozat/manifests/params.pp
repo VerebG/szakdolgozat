@@ -21,6 +21,12 @@ class szakdolgozat::params {
 
   $user_default_shell = '/usr/sbin/nologin'
 
-  $nagios_default_working_directory = '/etc/nagios3'
+  $munin_dbdir = '/var/lib/munin'
+
+  $munin_htmldir = '/var/www/munin'
+
+  $munin_logdir = '/var/log/munin'
+
+  $munin_rundir = '/var/run/munin'
 
 }

@@ -9,6 +9,8 @@ Exec {
 include ::stdlib
 include ::apt
 include ::szakdolgozat
+include ::szakdolgozat::munin::service
+include ::szakdolgozat::munin::node
 
 $networks = lookup('network', Hash, 'deep')
 $users = lookup('users', Hash, 'deep')

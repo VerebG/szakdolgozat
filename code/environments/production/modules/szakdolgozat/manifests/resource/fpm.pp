@@ -2,7 +2,6 @@ define szakdolgozat::resource::fpm (
   Enum['present', 'absent'] $ensure,
   Pattern[/^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$/] $listen_ip,
   Integer $listen_port,
-  Pattern[/^([0-9]{1,3}\.){3}[0-9]{1,3}(\/([0-9]|[1-2][0-9]|3[0-2]))?$/] $allowed_clients,
   Hash $environments,
   Hash $php_flag,
   Hash $php_value
@@ -32,8 +31,6 @@ define szakdolgozat::resource::fpm (
       user                   => $name,
       group                  => $name,
       listen                 => "${listen_ip}:${listen_port}",
-      listen_allowed_clients => $allowed_clients,
-      chroot                 => "/",
       access_log             => "${vhost_directory}/logs/access.log",
       pm                     => 'dynamic',
       pm_max_children        => 25,

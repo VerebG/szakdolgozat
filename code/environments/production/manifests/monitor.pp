@@ -1,6 +1,6 @@
 node 'monitor' {
 
-  include ::szakdolgozat::nagios::server
-  include ::szakdolgozat::nagios::generic
+  include ::szakdolgozat::munin::service
+  include ::szakdolgozat::munin::master
 
 }

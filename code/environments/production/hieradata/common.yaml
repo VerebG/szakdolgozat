@@ -3,3 +3,11 @@ users:
   verebgaborhu:
     ensure: present
     id: 5000
+    password: '*'
+backup:
+  aws_region:           'eu-central-1'
+  aws_bucket_name:      'szakdolgozat'
+  aws_access_key_id:    'AKIAJ5U3WUWBYY4RXTKQ'
+  aws_secret_acces_key: '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'
+  gpg_key:              '6BEF316A'
+  gpg_pass:             'hmx%iCy=VynqNM96WB!PyJM5'

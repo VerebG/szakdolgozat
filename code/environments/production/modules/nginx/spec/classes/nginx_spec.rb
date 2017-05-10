@@ -326,7 +326,7 @@ describe 'nginx' do
         )
       end
       it do
-        is_expected.to contain_file('/etc/nginx/nginx.conf').with(
+        is_expected.to contain_file('/etc/nginx/nginx.nginx').with(
           ensure: 'file',
           owner: 'root',
           group: 'root',
@@ -349,7 +349,7 @@ describe 'nginx' do
       end
       it { is_expected.to contain_file('/var/nginx/client_body_temp').with(owner: 'nginx') }
       it { is_expected.to contain_file('/var/nginx/proxy_temp').with(owner: 'nginx') }
-      it { is_expected.to contain_file('/etc/nginx/nginx.conf').with_content %r{^user nginx;} }
+      it { is_expected.to contain_file('/etc/nginx/nginx.nginx').with_content %r{^user nginx;} }
 
       it do
         is_expected.to contain_file('/var/log/nginx').with(
@@ -360,7 +360,7 @@ describe 'nginx' do
         )
       end
 
-      describe 'nginx.conf template content' do
+      describe 'nginx.nginx template content' do
         [
           {
             title: 'should not set user',
@@ -886,19 +886,19 @@ describe 'nginx' do
           context "when #{param[:attr]} is #{param[:value]}" do
             let(:params) { { param[:attr].to_sym => param[:value] } }
 
-            it { is_expected.to contain_file('/etc/nginx/nginx.conf').with_mode('0644') }
+            it { is_expected.to contain_file('/etc/nginx/nginx.nginx').with_mode('0644') }
             it param[:title] do
               matches = Array(param[:match])
 
               if matches.all? { |m| m.is_a? Regexp }
-                matches.each { |item| is_expected.to contain_file('/etc/nginx/nginx.conf').with_content(item) }
+                matches.each { |item| is_expected.to contain_file('/etc/nginx/nginx.nginx').with_content(item) }
               else
-                lines = catalogue.resource('file', '/etc/nginx/nginx.conf').send(:parameters)[:content].split("\n")
+                lines = catalogue.resource('file', '/etc/nginx/nginx.nginx').send(:parameters)[:content].split("\n")
                 expect(lines & Array(param[:match])).to eq(Array(param[:match]))
               end
 
               Array(param[:notmatch]).each do |item|
-                is_expected.to contain_file('/etc/nginx/nginx.conf').without_content(item)
+                is_expected.to contain_file('/etc/nginx/nginx.nginx').without_content(item)
               end
             end
           end
@@ -907,24 +907,24 @@ describe 'nginx' do
 
       context 'when proxy_cache_path is /path/to/proxy.cache and loader_files is 1000' do
         let(:params) { { conf_dir: '/path/to/nginx', proxy_cache_path: '/path/to/proxy.cache', proxy_cache_loader_files: '1000' } }
-        it { is_expected.to contain_file('/path/to/nginx/nginx.conf').with_content(%r{\s+proxy_cache_path\s+/path/to/proxy.cache levels=1 keys_zone=d2:100m max_size=500m inactive=20m loader_files=1000;}) }
+        it { is_expected.to contain_file('/path/to/nginx/nginx.nginx').with_content(%r{\s+proxy_cache_path\s+/path/to/proxy.cache levels=1 keys_zone=d2:100m max_size=500m inactive=20m loader_files=1000;}) }
       end
 
       context 'when proxy_cache_path is /path/to/nginx and loader_sleep is 50ms' do
         let(:params) { { conf_dir: '/path/to/nginx', proxy_cache_path: '/path/to/proxy.cache', proxy_cache_loader_sleep: '50ms' } }
-        it { is_expected.to contain_file('/path/to/nginx/nginx.conf').with_content(%r{\s+proxy_cache_path\s+/path/to/proxy.cache levels=1 keys_zone=d2:100m max_size=500m inactive=20m loader_sleep=50ms;}) }
+        it { is_expected.to contain_file('/path/to/nginx/nginx.nginx').with_content(%r{\s+proxy_cache_path\s+/path/to/proxy.cache levels=1 keys_zone=d2:100m max_size=500m inactive=20m loader_sleep=50ms;}) }
       end
 
       context 'when proxy_cache_path is /path/to/nginx and loader_threshold is 300ms' do
         let(:params) { { conf_dir: '/path/to/nginx', proxy_cache_path: '/path/to/proxy.cache', proxy_cache_loader_threshold: '300ms' } }
-        it { is_expected.to contain_file('/path/to/nginx/nginx.conf').with_content(%r{\s+proxy_cache_path\s+/path/to/proxy.cache levels=1 keys_zone=d2:100m max_size=500m inactive=20m loader_threshold=300ms;}) }
+        it { is_expected.to contain_file('/path/to/nginx/nginx.nginx').with_content(%r{\s+proxy_cache_path\s+/path/to/proxy.cache levels=1 keys_zone=d2:100m max_size=500m inactive=20m loader_threshold=300ms;}) }
       end
 
       context 'when conf_dir is /path/to/nginx' do
         let(:params) { { conf_dir: '/path/to/nginx' } }
-        it { is_expected.to contain_file('/path/to/nginx/nginx.conf').with_content(%r{include       /path/to/nginx/mime\.types;}) }
-        it { is_expected.to contain_file('/path/to/nginx/nginx.conf').with_content(%r{include /path/to/nginx/conf\.d/\*\.conf;}) }
-        it { is_expected.to contain_file('/path/to/nginx/nginx.conf').with_content(%r{include /path/to/nginx/sites-enabled/\*;}) }
+        it { is_expected.to contain_file('/path/to/nginx/nginx.nginx').with_content(%r{include       /path/to/nginx/mime\.types;}) }
+        it { is_expected.to contain_file('/path/to/nginx/nginx.nginx').with_content(%r{include /path/to/nginx/conf\.d/\*\.conf;}) }
+        it { is_expected.to contain_file('/path/to/nginx/nginx.nginx').with_content(%r{include /path/to/nginx/sites-enabled/\*;}) }
       end
 
       context 'when confd_purge true' do
@@ -962,7 +962,7 @@ describe 'nginx' do
           )
           is_expected.not_to contain_file('/etc/nginx/sites-available')
           is_expected.not_to contain_file('/etc/nginx/sites-enabled')
-          is_expected.to contain_file('/etc/nginx/nginx.conf').without_content(%r{include /path/to/nginx/sites-enabled/\*;})
+          is_expected.to contain_file('/etc/nginx/nginx.nginx').without_content(%r{include /path/to/nginx/sites-enabled/\*;})
           is_expected.not_to contain_file('/etc/nginx/streams-available')
           is_expected.not_to contain_file('/etc/nginx/streams-enabled')
         end
@@ -1100,7 +1100,7 @@ describe 'nginx' do
         let(:params) { { daemon_user: 'www-data' } }
         it { is_expected.to contain_file('/var/nginx/client_body_temp').with(owner: 'www-data') }
         it { is_expected.to contain_file('/var/nginx/proxy_temp').with(owner: 'www-data') }
-        it { is_expected.to contain_file('/etc/nginx/nginx.conf').with_content %r{^user www-data;} }
+        it { is_expected.to contain_file('/etc/nginx/nginx.nginx').with_content %r{^user www-data;} }
       end
 
       context 'when nginx_error_log_severity = invalid' do
@@ -1114,12 +1114,12 @@ describe 'nginx' do
 
         it { is_expected.to contain_file('/foo/bar').with(ensure: 'directory') }
         it do
-          is_expected.to contain_file('/etc/nginx/nginx.conf').with_content(
+          is_expected.to contain_file('/etc/nginx/nginx.nginx').with_content(
             %r{access_log  /foo/bar/access.log;}
           )
         end
         it do
-          is_expected.to contain_file('/etc/nginx/nginx.conf').with_content(
+          is_expected.to contain_file('/etc/nginx/nginx.nginx').with_content(
             %r{error_log  /foo/bar/error.log error;}
           )
         end

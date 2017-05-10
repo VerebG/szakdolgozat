@@ -1,3 +1,0 @@
----
-icinga::service::icinga_autostart: true
-icinga::server::install::ubuntu::override_default_repo_priority: true

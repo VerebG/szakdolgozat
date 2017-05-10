@@ -23,8 +23,9 @@ define szakdolgozat::resource::vhost (
       index_files     => ['index.php', 'index.html', 'index.htm'],
       fastcgi         => $name,
       fastcgi_index   => 'index.php',
+      fastcgi_script  => "${www_root}/index.hu",
       fastcgi_param   => {
-        'SCRIPT_FILENAME'   => '$document_root$fastcgi_script_name',
+        'SCRIPT_FILENAME'   => "${www_root}\$fastcgi_script_name",
         'QUERY_STRING'      => '$query_string',
         'REQUEST_METHOD'    => '$request_method',
         'CONTENT_TYPE'      => '$content_type',
@@ -32,7 +33,7 @@ define szakdolgozat::resource::vhost (
         'SCRIPT_NAME'       => '$fastcgi_script_name',
         'REQUEST_URI'       => '$request_uri',
         'DOCUMENT_URI'      => '$document_uri',
-        'DOCUMENT_ROOT'     => '$document_root',
+        'DOCUMENT_ROOT'     =>  $www_root,
         'SERVER_PROTOCOL'   => '$server_protocol',
         'GATEWAY_INTERFACE' => 'CGI/1.1',
         'SERVER_SOFTWARE'   => 'nginx/$nginx_version',
@@ -43,6 +44,14 @@ define szakdolgozat::resource::vhost (
         'SERVER_NAME'       => '$server_name',
         'REDIRECT_STATUS'   => '200',
       }
+  }
+
+  @@Backupaws::Duply {
+    $name:
+      backuptype        => 'files',
+      backuptypeselect  => [ $www_root ],
+      backupdescription => "${name} vhost file backup",
+      aws_bucket_name   => $name;
   }
 
 }

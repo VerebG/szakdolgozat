@@ -1,0 +1,38 @@
+---
+hostname: &hostname mysql01
+internal_ip: &internal_ip 192.168.4.1
+external_ip: &external_ip
+network:
+  eth0:
+    ipaddress:     *internal_ip
+    netmask:       255.255.0.0
+    network:       192.168.0.0
+    broadcast:     192.168.255.255
+    gateway:       192.168.1.254
+mysql_server:
+  root_password: 'A4sp!PwQQx7anaW7K$TqX8VX'
+  remove_default_accounts: true
+  override_options:
+    mysqld:
+      bind_address:             *internal_ip
+      max_connections:          200
+      innodb_buffer_pool_size:  1024M
+      innodb_log_buffer_size:   512M
+      innodb_log_file_size:     128M
+  databases:
+    verebgaborhu:
+      ensure:        present
+      charset:       utf8
+  users:
+    verebgaborhu@%:
+      ensure:        present
+      password_hash: "*D92AA10304EC68E71BB1E6ED65C73398FCC3FC85"
+  grants:
+    verebgaborhu@%/verebgaborhu.*:
+      ensure:        present
+      options:
+        - GRANT
+      privileges:
+        - ALL
+      table:         'verebgaborhu.*'
+      user:          'verebgaborhu@%'

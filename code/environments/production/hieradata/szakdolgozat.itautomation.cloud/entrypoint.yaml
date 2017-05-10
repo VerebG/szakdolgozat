@@ -1,0 +1,17 @@
+---
+hostname: &hostname entrypoint
+internal_ip: &internal_ip 192.168.8.1
+external_ip: &external_ip
+network:
+  eth0:
+    ipaddress:     *internal_ip
+    netmask:       255.255.0.0
+    network:       192.168.0.0
+    broadcast:     192.168.255.255
+    gateway:       192.168.1.254
+users:
+  verebgaborhu:
+    ensure:   present
+    shell:    '/bin/bash'
+    password: '$6$I8dgvk0f$LmFQ74y9gpnhVwIl5QNrHMGXPwlXPqGG6YiQkJ1RN4llGBfwk1kznHUqCCnfaQzkhof0ptl6hYjScVhCRRrbk1' #verebgabor
+    id:       5000

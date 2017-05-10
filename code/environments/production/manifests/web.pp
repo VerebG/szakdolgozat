@@ -10,5 +10,5 @@ node /web0[1-2]/ {
       upstreams => $pools,
       vhosts    => $vhosts;
   }
-
+  
 }

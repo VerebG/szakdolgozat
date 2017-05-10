@@ -1,5 +1,7 @@
 class szakdolgozat::basepackages {
 
+  assert_private()
+
   $packages_will_install = [
     'mc', 'htop', 'iptraf', 'augeas-tools', 'libfcgi0ldbl'
   ]

@@ -18,12 +18,10 @@ php:
       ensure: present
       listen_ip: *internal_ip
       listen_port: 9000
-      allowed_clients: 192.168.6.1
       environments:
         FIRST_MYSQL_HOST: '192.168.4.1'
-        SECOND_MYSQL_HOST: '192.168.4.2'
-        THIRD_MYSQL_HOST: '192.168.4.3'
         MYSQL_USER: 'verebgaborhu'
+        MYSQL_DB:   'verebgaborhu'
         MYSQL_PASS: 'eejei5koo7diiShii5Aez8Yi'
         PROXY_HOST: *internal_ip
         PROXY_PORT: 9000

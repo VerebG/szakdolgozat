@@ -158,7 +158,7 @@
 #     default. Can also be disabled for this server with the string 'off'.
 #   [*error_log*]               - Where to write error log. May add additional
 #     options like error level to the end. May set to 'absent', in which case
-#     it will be omitted in this server stanza (and default to nginx.conf setting)
+#     it will be omitted in this server stanza (and default to nginx.nginx setting)
 #   [*passenger_cgi_param*]     - Allows one to define additional CGI environment
 #     variables to pass to the backend application
 #   [*passenger_set_header*]        - Allows one to set headers to pass to the

@@ -1,6 +1,6 @@
 ---
-hostname: &hostname nfs01
-internal_ip: &internal_ip 192.168.5.1
+hostname: &hostname backup01
+internal_ip: &internal_ip 192.168.9.1
 external_ip: &external_ip
 network:
   eth0:

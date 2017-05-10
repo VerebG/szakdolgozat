@@ -1,6 +1,6 @@
 ---
-hostname: &hostname web01
-internal_ip: &internal_ip 192.168.6.1
+hostname: &hostname web02
+internal_ip: &internal_ip 192.168.6.2
 external_ip: &external_ip
 network:
   eth0:
