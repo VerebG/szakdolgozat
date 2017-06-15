@@ -1,0 +1,7 @@
+<%- if @timezone_file_comments -%>
+# File is managed by Puppet
+<%- end -%>
+ZONE="<%= @timezone %>"
+<% if @hw_utc %>
+UTC=<%= @hw_utc %>
+<% end -%>

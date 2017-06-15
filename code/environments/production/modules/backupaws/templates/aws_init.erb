@@ -1,0 +1,12 @@
+Backup type: <%=@backuptype%>
+<% if @backupdescription.to_s != '' -%>
+Backup description: <%=@backupdescription%> 
+<% end -%>
+This directory include following '<%=@name%>' backups:
+<% if @backuptypeselect.is_a?(Array) -%>
+<% @backuptypeselect.each do |db| -%>
+<%=db %>
+<% end -%>
+<% else %>
+All database saved!
+<% end -%>

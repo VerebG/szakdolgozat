@@ -1,0 +1,5 @@
+settings{
+    logfile = "<%= scope.lookupvar('::filesynchronization::lsyncd_log_dir') %>/lsyncd.log",
+    statusFile = "<%= scope.lookupvar('::filesynchronization::lsyncd_status_file') %>",
+    statusInterval = 1,
+}

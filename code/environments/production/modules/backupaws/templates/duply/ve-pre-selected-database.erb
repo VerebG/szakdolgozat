@@ -1,0 +1,45 @@
+#!/bin/bash
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+set -e
+
+LOCKFILE=/var/run/backup/backup-<%=@name%>.lock
+PID=$$
+
+#Variables
+FULLTEMPDIR="/tmp/<%=@hostname%>/<%=@name%>"
+
+#Program inicialization
+mkdir -p $(dirname $LOCKFILE)
+touch $LOCKFILE
+exec 200>$LOCKFILE
+flock -x -n 200
+echo -n $PID >$LOCKFILE
+
+
+if [ "$(/usr/bin/mysqladmin status | awk '{ print $2 }')" -eq 0 ]; then
+    echo 'ERROR! MySQL server NOT RUNNING!\n';
+    exit 1
+fi
+
+#while [ $(pgrep -c duply) -gt 11 ]; 
+#    do sleep $[ ($RANDOM % 60)+1 ]s; 
+#done
+
+echo "Temporary directory ....."
+
+if [ ! -d "$FULLTEMPDIR" ]; then
+    $(mkdir -p "$FULLTEMPDIR")
+    echo " CREATED\n"
+else
+    echo " ALREADY EXISTS\n"
+fi
+
+echo "Database backup type: SELECTED DATABASE(S)"
+
+while IFS='' read -r databasename || [[ -n "$databasename" ]]; do
+    echo "$databasename database backup ....."
+	$(mysqldump --lock-tables $databasename > $FULLTEMPDIR/$databasename.sql)
+    echo " SUCCESS\n"
+done < /root/.duply/<%=@hostname%>-<%=@name%>/mysqldatabases.backup

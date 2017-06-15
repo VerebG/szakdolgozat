@@ -1,0 +1,5 @@
+uid = <%= scope.lookupvar('::filesynchronization::rsyncd_uid') %>
+gid = <%= scope.lookupvar('::filesynchronization::rsyncd_gid') %>
+use chroot = <%= scope.lookupvar('::filesynchronization::rsyncd_use_chroot') %>
+pid file = /var/run/rsyncd.pid
+address = <%= scope.lookupvar('::filesynchronization::rsyncd_ipv4_listen') %>

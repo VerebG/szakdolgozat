@@ -1,0 +1,62 @@
+{
+  "name": "kogitoapp-timezone",
+  "version": "1.1.5",
+  "author": "kogitoapp",
+  "summary": "Manage timezone settings with Puppet",
+  "license": "Apache-2.0",
+  "source": "https://github.com/kogitoapp/puppet-timezone.git",
+  "project_page": "https://github.com/kogitoapp/puppet-timezone",
+  "issues_url": "https://github.com/kogitoapp/puppet-timezone/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 4.14.0 < 5.0.0"},
+    {"name":"puppet-yum","version_requirement":">= 1.0.0 < 2.0.0"},
+    {"name":"puppetlabs-apt","version_requirement":">= 2.3.0 < 3.0.0"},
+    {"name":"stm-debconf","version_requirement":">= 1.0.0 < 2.0.0"}
+  ],
+  "data_provider": null,
+  "tags": [
+    "timezone",
+    "linux"
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [
+        "24"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04",
+        "16.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.0.0 < 5.0.0"
+    }
+  ]
+}

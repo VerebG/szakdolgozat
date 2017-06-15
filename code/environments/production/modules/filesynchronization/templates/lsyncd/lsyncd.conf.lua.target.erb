@@ -1,0 +1,7 @@
+
+sync{
+    default.rsync,
+    source="<%=@source %>",
+    target="<%=@username %>@<%=@target %>::<%=@share %>",
+    delete=<%=@autodelete %>,
+}

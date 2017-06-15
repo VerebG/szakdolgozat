@@ -1,0 +1,12 @@
+#!/bin/bash
+
+FULLTEMPDIR="/tmp/<%=@hostname%>/<%=@name%>"
+LOCKFILE=/var/run/backup/backup-<%=@name%>.lock
+
+duply <%=@hostname%>-<%=@name%> purge-full 4 --force
+
+rm -Rf $FULLTEMPDIR
+rm -Rf $LOCKFILE
+
+echo "Temp directory ($FULLTEMPDIR) successfully removed!\n"
+

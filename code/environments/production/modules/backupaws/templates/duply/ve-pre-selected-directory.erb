@@ -1,0 +1,36 @@
+#!/bin/bash
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+set -e
+
+LOCKFILE=/var/run/backup/backup-<%=@name%>.lock
+PID=$$
+
+#Variables
+FULLTEMPDIR="/tmp/<%=@hostname%>/<%=@name%>"
+
+#Program inicialization
+mkdir -p $(dirname $LOCKFILE)
+touch $LOCKFILE
+exec 200>$LOCKFILE
+flock -x -n 200
+echo -n $PID >$LOCKFILE
+
+echo "Temporary directory ....."
+
+if [ ! -d "$FULLTEMPDIR" ]; then
+    $(mkdir -p "$FULLTEMPDIR")
+    echo " CREATED\n"
+else
+    echo " ALREADY EXISTS\n"
+fi
+
+echo "Database backup type: SELECTED DIRECTORY(S)"
+
+while IFS='' read -r directory || [[ -n "$directory" ]]; do
+    REPLACEDNAME=$(echo "$directory" | sed -r 's/[/]+/I/g')
+    echo "$directory name convert to ASCII based string $REPLACEDNAME and compress ....."
+    $(tar czf $FULLTEMPDIR/$REPLACEDNAME.tar.gz $directory)
+    echo " SUCCESS\n"
+done < /root/.duply/<%=@hostname%>-<%=@name%>/directory.backup
